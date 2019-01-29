@@ -40,7 +40,7 @@ int main(int argc, char *argv[])
         char *token = strtok(buffer, s);
         while (token) {
             printf("token: %s\n", token);
-            //strcpy (token, command); cant copy token into command
+            //strcpy (token, command); cant copy token into command, sprintf maybe
             printf("command is: %s\n", command);
             token = strtok(NULL, s);
         }
