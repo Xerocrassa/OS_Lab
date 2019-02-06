@@ -15,3 +15,42 @@
 
 // Define your utility functions here, these will most likely be functions that you call
 // in your myshell.c source file
+void cd(char* directory){
+
+}
+
+void clr(void){
+    printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+
+}
+
+void printdir(void){
+    //broken
+    char currentpath[256];
+    getcwd(currentpath, sizeof(currentpath));
+    printf("%s", currentpath);
+}
+
+void dir(void){
+
+}
+
+void echo(char* sentence){
+
+}
+
+void environ(void){
+
+}
+
+void help(void){
+
+}
+
+void stop(void){
+
+}
+
+void quit(void){
+
+}

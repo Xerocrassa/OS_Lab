@@ -11,5 +11,22 @@
 // Include your relevant functions declarations here they must start with the
 // extern keyword such as in the following example:
 // extern void display_help(void);
+extern void cd(char*);
+
+extern void clr(void);
+
+extern void dir(void);
+
+extern void echo(char*);
+
+extern void environ(void);
+
+extern void help(void);
+
+extern void stop(void);
+
+extern void quit(void);
+
+extern void printdir(void);
 
 #endif /* UTILITY_H_ */

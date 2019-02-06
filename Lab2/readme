@@ -1,1 +1,1 @@
-This is a readme
+To get the tokenizer working you gotta ./myshell <some string> then hit enter and enter the string you want to tokenize. I will get the command line string parsing working some other time.
