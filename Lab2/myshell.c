@@ -50,7 +50,7 @@ int main(int argc, char *argv[])
         if (strcmp(command, "cd") == 0)
         {
 
-            printf ("cd work");
+            printf ("cd work\n");
         }
 
         else if (strcmp(command, "clr") == 0)
