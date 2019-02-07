@@ -13,9 +13,21 @@
 #include <string.h>
 #include "utility.h"
 
+extern char **environ;
+
 // Define your utility functions here, these will most likely be functions that you call
 // in your myshell.c source file
 void cd(char* directory){
+    int changestatus = chdir(directory);
+    if (changestatus == 0){
+        printf("Path changed to ");
+        printdir();
+        printf("\n");
+    }
+    else
+    {
+        printf("Unable to change directory due to error. The path has not been changed.\n");
+    }
 
 }
 
@@ -25,22 +37,29 @@ void clr(void){
 }
 
 void printdir(void){
-    //broken
     char currentpath[256];
     getcwd(currentpath, sizeof(currentpath));
-    printf("%s", currentpath);
+    printf("%s ", currentpath);
 }
 
-void dir(void){
-
+void dir(char* directory){
+    DIR *dir = NULL;
+    struct dirent *dp;
+    if ((dir=opendir(directory))==NULL){
+        printf("Error, Cannot open directory");
+    }
+    while((dp=readdir(dir))!=NULL){
+        printf("%s\n", dp->d_name);
+    }
 }
 
-void echo(char* sentence){
 
-}
-
-void environ(void){
-
+void environment(void){
+    int i=0;
+    while(environ[i]){
+        printf("%s\n", environ[i]);
+        i++;
+    }
 }
 
 void help(void){
@@ -48,9 +67,5 @@ void help(void){
 }
 
 void stop(void){
-
-}
-
-void quit(void){
 
 }

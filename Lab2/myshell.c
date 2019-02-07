@@ -29,8 +29,10 @@ int main(int argc, char *argv[])
     char command[BUFFER_LEN] = {0};
     char arg[BUFFER_LEN] = {0};
     char input[MAX_INPUT][BUFFER_LEN];
-    char pwd[BUFFER_LEN];
     const char s[3] = " \n";
+
+    printf("Welcome to the shell! Type any command to get started\n");
+    printdir();
 
     // Perform an infinite loop getting command input from users
     while (fgets(buffer, BUFFER_LEN, stdin) != NULL)
@@ -49,7 +51,7 @@ int main(int argc, char *argv[])
         // cd command -- change the current directory
         if (strcmp(command, "cd") == 0)
         {
-            printf ("cd work\n");
+            cd(input[1]);
         }
 
         else if (strcmp(command, "clr") == 0)
@@ -59,17 +61,20 @@ int main(int argc, char *argv[])
 
         else if (strcmp(command, "dir") == 0)
         {
-            return EXIT_SUCCESS;
+            dir(input[1]);
         }
 
         else if (strcmp(command, "environ") == 0)
         {
-            return EXIT_SUCCESS;
+            environment();
         }
 
         else if (strcmp(command, "echo") == 0)
         {
-            return EXIT_SUCCESS;
+            for (int w=1; w < i; w++){
+                printf("%s ", input[w]);
+            }
+            printf("\n");
         }
 
         else if (strcmp(command, "help") == 0)
@@ -82,8 +87,6 @@ int main(int argc, char *argv[])
             return EXIT_SUCCESS;
         }
 
-        // other commands here...
-
         // quit command -- exit the shell
         else if (strcmp(command, "quit") == 0)
         {
@@ -95,7 +98,7 @@ int main(int argc, char *argv[])
         {
             fputs("Unsupported command, use help to display the manual\n", stderr);
         }
-        //add directory thing here
+        printdir();
         
     }
     return EXIT_SUCCESS;

@@ -15,17 +15,13 @@ extern void cd(char*);
 
 extern void clr(void);
 
-extern void dir(void);
+extern void dir(char*);
 
-extern void echo(char*);
-
-extern void environ(void);
+extern void environment(void);
 
 extern void help(void);
 
 extern void stop(void);
-
-extern void quit(void);
 
 extern void printdir(void);
 
