@@ -49,7 +49,7 @@ int main(int argc, char *argv[])
         // cd command -- change the current directory
         if (strcmp(command, "cd") == 0)
         {
-
+            system("pwd");
             printf ("cd work\n");
         }
 
