@@ -1,0 +1,9 @@
+Welcome to the help menu. Here are the functions you can use
+cd <path>. Changes the directory you are in
+clr. Clears the screen
+dir <path>. Lists the contents of the given path
+environ. Lists the environment variables
+echo <sentence>. Prints the sentence to the command line
+help. Lists this menu
+pause. Pauses the program until the enter key is hit
+quit. Quits the shell
