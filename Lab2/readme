@@ -1,7 +1,26 @@
 This is the lab project for lab 2.
 
+Group Members:
 Name: Darren Chan
 ID: 100618756
+
+Name:Walid Safi
+ID:
+
+Name:Ahemd Mohamed
+ID:
+
+Commands:
+cd <path>. Changes the directory you are in.
+clr. Clears the screen
+dir <path>. Lists the contents of the given path
+environ. Lists the environment variables
+echo <sentence>. Prints the sentence to the comman line
+help. Lists this menu
+pause. Pauses the program until the enter key is hit
+quit. Quits the shell
+
+Note:This program only takes a max of 16 words seperated by whitespaces. No real reason other than 16 sounded like a good number.
 
 Contributions:
 Tokenizer: Darren

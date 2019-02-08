@@ -18,10 +18,6 @@
 #define BUFFER_LEN 256
 #define MAX_INPUT 16
 
-// Put global environment variables here
-
-// Define functions declared in myshell.h here
-
 int main(int argc, char *argv[])
 {
     // Input buffer and and commands
@@ -34,13 +30,16 @@ int main(int argc, char *argv[])
     printf("Welcome to the shell! Type any command to get started\n");
     printdir();
 
-    if (argc == 2){
+    // If there is something else on the command line other than ./myshell
+    if (argc > 1){
+        //Open file stream
         inputstream = fopen(argv[1], "r");
         if (inputstream==NULL){
             perror("Error opening file");
             return EXIT_FAILURE;
         }
     }
+    //Use stdin if no other command line inputs
     else{
         inputstream = stdin;
     }
@@ -49,13 +48,14 @@ int main(int argc, char *argv[])
     while (fgets(buffer, BUFFER_LEN, inputstream) != NULL)
     {
         int i = 0;
-        // Perform string tokenization to get the command and argument
+        // Perform string tokenization and split them into an input array
         char *token = strtok(buffer, s);
         while (token != NULL) {
             sprintf (input[i], "%s", token);
             token = strtok(NULL, s);
             i++;
         }
+        //Parse the command
         sprintf (command, "%s", input[0]);
         
         // Check the command and execute the operations for each command
@@ -64,22 +64,22 @@ int main(int argc, char *argv[])
         {
             cd(input[1]);
         }
-
+        //clr command -- Clear screen
         else if (strcmp(command, "clr") == 0)
         {
             clr();
         }
-
+        //dir command -- Display everyting under given directory
         else if (strcmp(command, "dir") == 0)
         {
             dir(input[1]);
         }
-
+        //environ -- Display environment variables
         else if (strcmp(command, "environ") == 0)
         {
             environment();
         }
-
+        //echo -- Print given message
         else if (strcmp(command, "echo") == 0)
         {
             for (int w=1; w < i; w++){
@@ -87,23 +87,21 @@ int main(int argc, char *argv[])
             }
             printf("\n");
         }
-
+        //help -- Displays help menu
         else if (strcmp(command, "help") == 0)
         {
             help();
         }
-
+        //pause -- Pauses until enter button is hit
         else if (strcmp(command, "pause") == 0)
         {
             stop();
         }
-
         // quit command -- exit the shell
         else if (strcmp(command, "quit") == 0)
         {
             return EXIT_SUCCESS;
         }
-
         // Unsupported command
         else
         {
