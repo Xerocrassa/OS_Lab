@@ -27,15 +27,26 @@ int main(int argc, char *argv[])
     // Input buffer and and commands
     char buffer[BUFFER_LEN] = {0};
     char command[BUFFER_LEN] = {0};
-    char arg[BUFFER_LEN] = {0};
     char input[MAX_INPUT][BUFFER_LEN];
+    FILE * inputstream = NULL;
     const char s[3] = " \n";
 
     printf("Welcome to the shell! Type any command to get started\n");
     printdir();
 
+    if (argc == 2){
+        inputstream = fopen(argv[1], "r");
+        if (inputstream==NULL){
+            perror("Error opening file");
+            return EXIT_FAILURE;
+        }
+    }
+    else{
+        inputstream = stdin;
+    }
+
     // Perform an infinite loop getting command input from users
-    while (fgets(buffer, BUFFER_LEN, stdin) != NULL)
+    while (fgets(buffer, BUFFER_LEN, inputstream) != NULL)
     {
         int i = 0;
         // Perform string tokenization to get the command and argument
@@ -79,12 +90,12 @@ int main(int argc, char *argv[])
 
         else if (strcmp(command, "help") == 0)
         {
-            return EXIT_SUCCESS;
+            help();
         }
 
         else if (strcmp(command, "pause") == 0)
         {
-            return EXIT_SUCCESS;
+            stop();
         }
 
         // quit command -- exit the shell
@@ -99,7 +110,6 @@ int main(int argc, char *argv[])
             fputs("Unsupported command, use help to display the manual\n", stderr);
         }
         printdir();
-        
     }
     return EXIT_SUCCESS;
 }
