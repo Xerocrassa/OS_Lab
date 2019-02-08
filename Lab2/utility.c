@@ -90,6 +90,21 @@ void help(void){
     printf("help. Lists this menu\n");
     printf("pause. Pauses the program until the enter key is hit\n");
     printf("quit. Quits the shell\n");
+    
+    /* Reads help.txt which containts the help menu
+    char readline[256];
+
+    FILE*fp;
+    fp=fopen("help.txt","r");
+
+    if(fp == NULL){
+      puts("Error opening file");
+    } else {
+        while (fgets(readline,sizeof(readline),fp) != NULL) {
+          printf("%s\n",readline );
+        }
+      }
+    fclose(fp); */
 }
 
 //Pause
